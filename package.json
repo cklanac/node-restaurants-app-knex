@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha",
-    "dev": "nodemon drills.js"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
