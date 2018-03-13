@@ -67,7 +67,3 @@ knex.select('restaurants.id', 'name', 'cuisine', 'borough', 'grades.id as gradeI
     console.log(JSON.stringify(hydrated, null, 2));
     
   });
-
-
-// Destroy the connection pool
-knex.destroy().then(() => { console.log('closed'); });
