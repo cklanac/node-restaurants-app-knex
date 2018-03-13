@@ -3,7 +3,7 @@
 const { DATABASE } = require('./config');
 const knex = require('knex')(DATABASE);
 
-// clear the console before each run
+// clear the console (just a convenience)
 process.stdout.write('\x1Bc');
 
 // Sample select 
@@ -12,7 +12,7 @@ knex
   .from('restaurants')
   .limit(2)
   .debug(true)
-  .then(results => console.log(results));
+  .then(results => console.log(JSON.stringify(results, null, 2)));
 
 
 //1: get all restaurants
@@ -107,7 +107,7 @@ knex
   })
   .returning(['id', 'name'])
   .into('restaurants')
-  .then(result => console.log(result));
+  .then(results => console.log(JSON.stringify(results, null, 2)));
 
 //10: Create three restaurants and return id and name
 knex
@@ -148,6 +148,3 @@ knex
   .where({id: 22})
   .returning(['name', 'id'])
   .then(results => console.log(JSON.stringify(results, null, 2)));
-
-// Destroy the connection pool
-knex.destroy().then(() => { console.log('closed'); });
